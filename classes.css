@@ -1,5 +1,5 @@
             body {
-                background-image: url("images/background2LIGHT.png");
+                background-image: url("background2LIGHT.png");
                 background-position: center;
                 display: flex;
                 flex-direction: column;
@@ -116,7 +116,7 @@
             }
 
             body.dark {
-                background-image: url("images/background2DARK.png");
+                background-image: url("background2DARK.png");
             }
 
             .dark .BigBoy, .dark .LilGuy, .dark .progress_bar, .dark .theme_btn {
