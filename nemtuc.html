@@ -1,0 +1,199 @@
+<!DOCTYPE html> 		<!-- ps: am trimis sub format .txt pt ca din cv motiv nu ma lasa sa trimit .html -->
+
+<html>
+    <head>
+        <title>Cat de average esti?</title>
+        <link rel="stylesheet" href="classes.css">
+    </head>
+
+    <body>
+        <h1 class="title theme_text">Cat de average esti?</h1>
+        <div class="progress_bar">
+            <p class="progress_text theme_text" id="progress"> </p>
+        </div>
+
+        <div class="BigBoy">
+            <p class="BigBoy_text theme_text" id="question"> </p>
+        </div>
+
+        <div class="row">
+            <div class="LilGuy" onclick="answer(0)">
+                <p class="LilGuy_text theme_text" id="a0"> </p>
+            </div>
+            <div class="LilGuy" onclick="answer(1)">
+                <p class="LilGuy_text theme_text" id="a1"> </p>
+            </div>
+            <div class="LilGuy" onclick="answer(2)">
+                <p class="LilGuy_text theme_text" id="a2"> </p>
+            </div>
+            <div class="LilGuy" onclick="answer(3)">
+                <p class="LilGuy_text theme_text" id="a3"> </p>
+            </div>
+        </div>
+        <button class="theme_btn" onclick="toggleTheme()">☀️</button>
+
+        <script>
+                const questions = [
+                    {
+                        text: "1. Ce faci vineri seara?",
+                        answers: [
+                            {text: "Invat la logica", score: 0},
+                            {text: "Lucrez la un proiect personal", score: 1},
+                            {text: "Ies in oras", score: 2},
+                            {text: "Ma uit la film / joc ceva", score: 3},
+                        ]
+                    },
+                    
+                    {
+                        text: "2. Care sport e mai smecher? ",
+                        answers: [
+                            {text: "Pickleball",score: 0},
+                            {text: "Tenis", score: 1},
+                            {text: "Basket", score: 2},
+                            {text: "Fotbal", score: 3},
+                        ]
+                    },
+
+                    {
+                        text: "3. Ce inaltime ai?",
+                        answers: [
+                            {text: " < 155 cm / > 195 cm", score: 0},
+                            {text: "155-165 cm / 185-195 cm",score: 1},
+                            {text: "165-175 cm / 180-185 cm", score: 2},
+                            {text: "175-180 cm", score: 3},
+                        ]
+                    },
+
+                    {
+                        text: "4. Ce telefon ai?",
+                        answers: [
+                            {text: "flip / nokia", score: 0},
+                            {text: "niche brand", score: 1},
+                            {text: "iphone < 15 / android mid-range", score: 2},
+                            {text: "iphone > 15 / samsung galaxy", score: 3},
+                        ]
+                    },
+
+                    {
+                        text: "5. Ceai sau cafea?",
+                        answers: [
+                            {text: "niciuna", score:0},
+                            {text: "ceai", score: 1},
+                            {text: "alternative (energizant, matcha)", score: 2},
+                            {text: "cafea", score: 3},
+                        ]
+                    },
+
+                    {
+                        text: "6. Ce animal de companie ai?",
+                        answers: [
+                            {text: "ceva exotic", score: 0},
+                            {text: "pasari / pesti", score: 1},
+                            {text: "caine / pisica",score: 2},
+                            {text: "n-am",score: 3},
+                        ]
+                    },
+                    
+                    {
+                        text: "7. Cat de des folosesti social media?",
+                        answers: [
+                            {text: "n-am", score: 0},
+                            {text: " < 30 min/zi sau > 6 ore/zi", score: 1},
+                            {text: " 30 min/zi - 2 ore/zi sau 6 ore/zi - 4 ore/zi", score: 2},
+                            {text: "2-4 ore/zi", score:  3},
+                        ]
+                    },
+
+                    {
+                        text: "8. Cum te imbraci de obicei? ",
+                        answers: [
+                            {text: "la stofa", score: 0},
+                            {text: "casual", score: 1},
+                            {text: "blugi", score: 2},
+                            {text: "trening", score: 3},
+                        ]
+                    },
+
+                    {
+                        text: "9. Daca ia avea o sursa infinita de o mancare, ce ai alege? ",
+                        answers: [
+                            {text: "Curry", score: 0},
+                            {text: "Mamaliga cu branza", score: 1},
+                            {text: "Paste", score: 2},
+                            {text: "Pizza", score: 3},
+                        ]
+                    },
+
+                    {
+                        text: "10. Unde locuiesti? ",
+                        answers: [
+                            {text: "Insula / loc remote", score: 0},
+                            {text: "vila", score: 1},
+                            {text: "casa", score: 2},
+                            {text: "apartament", score: 3},
+                        ]
+                    }
+                ]
+
+                let currQuestion = 0;
+                let totScore = 0;
+
+                function loadQuestion(){
+                    let q = questions[currQuestion];
+
+                    document.getElementById("question").innerText = q.text;
+
+                    document.getElementById("a0").innerText = q.answers[0].text;
+                    document.getElementById("a1").innerText = q.answers[1].text;
+                    document.getElementById("a2").innerText = q.answers[2].text;
+                    document.getElementById("a3").innerText = q.answers[3].text;
+
+                    document.getElementById("progress").innerText = "ai raspuns la " + currQuestion + " / " + questions.length + " intrebari";
+                }
+
+                function answer(index){
+                    totScore += questions[currQuestion].answers[index].score;
+                    currQuestion++;
+
+                    if(currQuestion < questions.length){
+                        loadQuestion();
+                    }
+                    else{
+                        showResult();
+                    }
+                }
+
+                function showResult(){
+                    let resultText = "";
+                    totScore = totScore / 30 * 100;
+                    totScore = Math.round(totScore * 10) / 10;
+
+                    if(totScore <= 20) resultText = "atipic";
+                    else if(totScore <= 40) resultText = "sub average";
+                    else if(totScore <= 60) resultText = "normal";
+                    else if(totScore <= 80) resultText = "destul de average";
+                    else resultText = "extrem de average";                    
+
+                    document.getElementById("question").innerText = "Esti " + totScore + "% average, asta inseamna ca intr-o camera cu 1000 de persoane, ai opinii similare cu " + totScore * 10 + ". Asta inseamna ca esti " + resultText;
+                    document.getElementById("progress").innerText = "Ai raspuns la " + questions.length + " / " + questions.length + " intrebari";
+
+
+                    document.getElementById("a0").innerText = "";
+                    document.getElementById("a1").innerText = "";
+                    document.getElementById("a2").innerText = "";
+                    document.getElementById("a3").innerText = "";
+
+
+                }
+
+                function toggleTheme(){
+                    document.body.classList.toggle("dark");
+                    let btn = document.querySelector(".theme_btn");
+                    btn.innerText = document.body.classList.contains("dark") ? "🌙" : "☀️";
+                }
+
+                loadQuestion();
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,164 @@
+            body {
+                background-image: url("images/background2LIGHT.png");
+                background-position: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                position: relative;
+
+                height: 100vh;
+                margin: 0;
+                gap: 30px;
+                padding-top: 100px;
+            }
+
+            .title{
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                font-size: 35px;
+                margin: 0;
+            }
+
+            .BigBoy {
+                background-color: white;
+                border: 3px solid black;
+                display: flex;
+                align-items: center; 
+                justify-content: center;
+
+                width: 900px;
+                height: 300px;
+                border-radius: 60px;
+            }
+
+            .BigBoy_text {
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                font-weight: bold;
+                text-align: center;
+                position: relative; 
+                font-size: 25px;
+                margin: 0px;   
+                top: -25px;  
+            }
+
+            .LilGuy {
+                width: 300px;
+                height: 75px;
+                display: flex;
+                align-items: center; 
+                justify-content: center;
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 90px;
+            }
+
+            .LilGuy:hover {
+                background-color: black;
+                cursor: pointer;
+            }
+
+            .LilGuy:hover .LilGuy_text {
+                color: white;
+            }
+
+            .LilGuy_text {
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                font-weight: bold;
+                text-align: center;
+                font-size: 15px;
+                margin: 0px;   
+            }
+
+            .progress_bar {
+                width: 600px;
+                height: 20px;
+                background-color: white;
+                border: 1px solid black;
+                display: flex;
+                align-items: center; 
+                justify-content: center;
+                border-radius: 10px;
+            }
+
+            .progress_text {
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                font-weight: bold;
+                margin: 0px;
+            }
+            
+            .row {
+                display: flex;
+                gap: 20px;
+            }
+
+            .img {
+                display: block;
+                position: absolute;
+                bottom: 0px;
+                margin: 20px auto;
+                width: 450px;
+                height: auto;
+            }
+
+            .theme_btn {
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                font-size: 20px;
+                border: 2px solid black;
+                border-radius: 90px;
+                padding: 10px 20px;
+                background-color: white;
+                cursor: pointer;
+            }
+
+            .dark .theme_btn {
+                background-color: black;
+                border-color: white;
+            }
+
+            body.dark {
+                background-image: url("images/background2DARK.png");
+            }
+
+            .dark .BigBoy, .dark .LilGuy, .dark .progress_bar, .dark .theme_btn {
+                background-color: black;
+                border-color: white;
+            }
+
+            .dark .theme_text {
+                color: white;
+            }
+
+            .dark .LilGuy:hover {
+                background-color: white;
+            }
+
+            .dark .LilGuy:hover .LilGuy_text {
+                color: black;
+            }
+
+@media (min-width: 901px) { /*pt desktop*/
+    .BigBoy {
+        width: 900px;
+    }
+
+    .LilGuy {
+        width: 300px;
+    }
+}
+
+@media (max-width: 600px) { /*pt telefon*/
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .BigBoy {
+        width: 90%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) { /*pt tableta*/
+    .LilGuy {
+        width: 220px;
+    }
+}
